@@ -1,0 +1,136 @@
+/* ── Product Reviews & Ratings — Technical Rajni ── */
+
+#tr_product_reviews {
+    border-top: 2px solid #eee;
+    padding-top: 32px;
+}
+
+.tr-reviews-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1a5e;
+    margin-bottom: 16px;
+}
+
+/* Average Rating Summary */
+.tr-review-summary {
+    background: #f8f9ff;
+    border-left: 4px solid #6c3fc5;
+    padding: 20px 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tr-avg-rating {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.tr-avg-score {
+    font-size: 36px;
+    font-weight: 900;
+    color: #1a1a5e;
+    line-height: 1;
+}
+
+.tr-stars-display {
+    display: flex;
+    gap: 2px;
+}
+
+.tr-review-count {
+    font-size: 13px;
+    color: #888;
+}
+
+/* Stars */
+.tr-star {
+    font-size: 20px;
+    color: #ddd;
+}
+.tr-star-full  { color: #f0ad4e; }
+.tr-star-half  { color: #f0ad4e; opacity: 0.6; }
+.tr-star-empty { color: #ddd; }
+
+/* Review Cards */
+.tr-reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tr-review-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.tr-review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.tr-review-title {
+    font-size: 15px;
+    color: #1a1a5e;
+}
+
+.tr-review-meta {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.tr-review-body {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Review Form */
+.tr-review-form-section {
+    background: #f8f9ff;
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid #e0e4f0;
+}
+
+.tr-review-form-section h4 {
+    color: #1a1a5e;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+/* Star Input */
+.tr-star-input {
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.tr-star-btn {
+    font-size: 32px;
+    color: #ddd;
+    transition: color 0.15s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tr-star-btn:hover,
+.tr-star-btn.active {
+    color: #f0ad4e;
+}
+
+.tr-form-group label {
+    color: #333;
+    font-size: 13px;
+}

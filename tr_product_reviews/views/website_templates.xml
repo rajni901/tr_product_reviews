@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="product_reviews_section" inherit_id="website_sale.product"
+              name="Product Reviews &amp; Ratings">
+        <xpath expr="//section[@id='product_detail']" position="after">
+            <section id="tr_product_reviews" class="container mt-5 mb-5"
+                     t-if="product.allow_reviews">
+
+                <!-- Average Rating Summary -->
+                <div class="tr-review-summary mb-4">
+                    <h3 class="tr-reviews-title">Customer Reviews</h3>
+                    <t t-if="product.review_count > 0">
+                        <div class="tr-avg-rating">
+                            <span class="tr-avg-score" t-esc="'%.1f' % product.avg_rating"/>
+                            <div class="tr-stars-display">
+                                <t t-set="avg" t-value="product.avg_rating"/>
+                                <t t-foreach="range(1, 6)" t-as="i">
+                                    <span t-att-class="'tr-star ' + ('tr-star-full' if i &lt;= avg else ('tr-star-half' if i - 0.5 &lt;= avg else 'tr-star-empty'))">★</span>
+                                </t>
+                            </div>
+                            <span class="tr-review-count">
+                                Based on <t t-esc="product.review_count"/> review(s)
+                            </span>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <p class="text-muted">No reviews yet. Be the first to review!</p>
+                    </t>
+                </div>
+
+                <!-- Approved Reviews List -->
+                <t t-if="product.review_ids">
+                    <div class="tr-reviews-list mb-4">
+                        <t t-foreach="product.review_ids" t-as="rev">
+                            <div class="tr-review-card">
+                                <div class="tr-review-header">
+                                    <div class="tr-review-stars">
+                                        <t t-foreach="range(1, 6)" t-as="i">
+                                            <span t-att-class="'tr-star ' + ('tr-star-full' if i &lt;= rev.rating_int else 'tr-star-empty')">★</span>
+                                        </t>
+                                    </div>
+                                    <strong class="tr-review-title" t-esc="rev.title"/>
+                                </div>
+                                <div class="tr-review-meta">
+                                    <span t-esc="rev.partner_id.name"/> —
+                                    <span t-field="rev.create_date" t-options='{"widget": "date"}'/>
+                                </div>
+                                <div class="tr-review-body" t-esc="rev.review"/>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+
+                <!-- Review Form -->
+                <div class="tr-review-form-section">
+                    <h4>Write a Review</h4>
+                    <t t-if="request.env.user._is_public()">
+                        <div class="alert alert-info">
+                            Please <a t-att-href="'/web/login?redirect=' + request.httprequest.path">log in</a>
+                            to write a review.
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <form id="tr_review_form" class="tr-review-form">
+                            <input type="hidden" id="tr_product_id" t-att-value="product.id"/>
+
+                            <!-- Star Rating -->
+                            <div class="tr-form-group mb-3">
+                                <label class="form-label fw-bold">Your Rating *</label>
+                                <div class="tr-star-input" id="tr_star_input">
+                                    <span class="tr-star-btn" data-value="1">★</span>
+                                    <span class="tr-star-btn" data-value="2">★</span>
+                                    <span class="tr-star-btn" data-value="3">★</span>
+                                    <span class="tr-star-btn" data-value="4">★</span>
+                                    <span class="tr-star-btn" data-value="5">★</span>
+                                </div>
+                                <input type="hidden" id="tr_rating_value" value="0"/>
+                            </div>
+
+                            <!-- Title -->
+                            <div class="tr-form-group mb-3">
+                                <label class="form-label fw-bold" for="tr_review_title">Review Title *</label>
+                                <input type="text" id="tr_review_title" class="form-control"
+                                       placeholder="Summarize your review"/>
+                            </div>
+
+                            <!-- Review text -->
+                            <div class="tr-form-group mb-3">
+                                <label class="form-label fw-bold" for="tr_review_body">Your Review</label>
+                                <textarea id="tr_review_body" class="form-control" rows="4"
+                                          placeholder="Share your experience with this product..."/>
+                            </div>
+
+                            <div id="tr_review_message" class="mb-3" style="display:none;"/>
+
+                            <button type="submit" class="btn btn-primary" id="tr_submit_review">
+                                Submit Review
+                            </button>
+                        </form>
+                    </t>
+                </div>
+
+            </section>
+        </xpath>
+    </template>
+
+</odoo>
