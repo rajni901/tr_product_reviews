@@ -4,18 +4,23 @@
     <template id="product_reviews_section" inherit_id="website_sale.product"
               name="Product Reviews &amp; Ratings">
         <xpath expr="//section[@id='product_detail']" position="after">
-            <section id="tr_product_reviews" class="container mt-5 mb-5"
-                     t-if="product.allow_reviews">
 
-                <!-- Success / Error messages from redirect -->
-                <t t-set="review_success" t-value="request.params.get('review_success')"/>
-                <t t-set="review_error" t-value="request.params.get('review_error')"/>
-                <div t-if="review_success" class="alert alert-success">
+            <!-- Flash messages — always visible regardless of allow_reviews -->
+            <t t-set="review_success" t-value="request.params.get('review_success')"/>
+            <t t-set="review_error" t-value="request.params.get('review_error')"/>
+            <div t-if="review_success" class="container mt-3">
+                <div class="alert alert-success">
                     ✓ Thank you! Your review has been submitted and is pending approval.
                 </div>
-                <div t-if="review_error" class="alert alert-danger">
+            </div>
+            <div t-if="review_error" class="container mt-3">
+                <div class="alert alert-danger">
                     ✗ <t t-esc="review_error"/>
                 </div>
+            </div>
+
+            <section id="tr_product_reviews" class="container mt-5 mb-5"
+                     t-if="product.allow_reviews">
 
                 <!-- Average Rating Summary -->
                 <div class="tr-review-summary mb-4">
