@@ -81,18 +81,11 @@
         <field name="context">{'search_default_pending': 1}</field>
     </record>
 
-    <!-- Website → Configuration → Product Reviews -->
+    <!-- eCommerce → Products → Product Reviews (next to Product Ribbons) -->
     <menuitem id="menu_product_reviews"
               name="Product Reviews"
-              parent="website.menu_website_configuration"
+              parent="website_sale.menu_catalog"
               action="action_product_reviews"
-              sequence="30"/>
-
-    <!-- eCommerce → Configuration → Product Reviews -->
-    <menuitem id="menu_product_reviews_ecommerce"
-              name="Product Reviews"
-              parent="website_sale.menu_ecommerce_settings"
-              action="action_product_reviews"
-              sequence="50"/>
+              sequence="20"/>
 
 </odoo>
