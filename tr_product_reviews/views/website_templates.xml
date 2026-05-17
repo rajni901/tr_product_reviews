@@ -7,6 +7,16 @@
             <section id="tr_product_reviews" class="container mt-5 mb-5"
                      t-if="product.allow_reviews">
 
+                <!-- Success / Error messages from redirect -->
+                <t t-set="review_success" t-value="request.params.get('review_success')"/>
+                <t t-set="review_error" t-value="request.params.get('review_error')"/>
+                <div t-if="review_success" class="alert alert-success">
+                    ✓ Thank you! Your review has been submitted and is pending approval.
+                </div>
+                <div t-if="review_error" class="alert alert-danger">
+                    ✗ <t t-esc="review_error"/>
+                </div>
+
                 <!-- Average Rating Summary -->
                 <div class="tr-review-summary mb-4">
                     <h3 class="tr-reviews-title">Customer Reviews</h3>
