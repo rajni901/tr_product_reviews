@@ -5,19 +5,28 @@
               name="Product Reviews &amp; Ratings">
         <xpath expr="//section[@id='product_detail']" position="after">
 
-            <!-- Flash messages — always visible regardless of allow_reviews -->
-            <t t-set="review_success" t-value="request.params.get('review_success')"/>
-            <t t-set="review_error" t-value="request.params.get('review_error')"/>
-            <div t-if="review_success" class="container mt-3">
-                <div class="alert alert-success">
-                    ✓ Thank you! Your review has been submitted and is pending approval.
-                </div>
+            <!-- Flash messages via JavaScript URL params -->
+            <div id="tr_review_flash" class="container mt-3" style="display:none;">
+                <div id="tr_review_flash_msg" class="alert"/>
             </div>
-            <div t-if="review_error" class="container mt-3">
-                <div class="alert alert-danger">
-                    ✗ <t t-esc="review_error"/>
-                </div>
-            </div>
+            <script>
+                (function(){
+                    var params = new URLSearchParams(window.location.search);
+                    var success = params.get('review_success');
+                    var error = params.get('review_error');
+                    var flash = document.getElementById('tr_review_flash');
+                    var msg = document.getElementById('tr_review_flash_msg');
+                    if (success) {
+                        flash.style.display = 'block';
+                        msg.className = 'alert alert-success';
+                        msg.textContent = '✓ Thank you! Your review has been submitted and is pending approval.';
+                    } else if (error) {
+                        flash.style.display = 'block';
+                        msg.className = 'alert alert-danger';
+                        msg.textContent = '✗ ' + decodeURIComponent(error);
+                    }
+                })();
+            </script>
 
             <section id="tr_product_reviews" class="container mt-5 mb-5"
                      t-if="product.allow_reviews">
