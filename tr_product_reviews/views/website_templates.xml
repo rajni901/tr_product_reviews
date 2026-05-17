@@ -5,10 +5,15 @@
               name="Product Reviews &amp; Ratings">
         <xpath expr="//section[@id='product_detail']" position="after">
 
-            <!-- Flash message div — filled by reviews.js -->
-            <div id="tr_review_flash" class="container mt-3" style="display:none;">
-                <div id="tr_review_flash_msg" class="alert"/>
-            </div>
+            <!-- Flash message from session -->
+            <t t-set="review_msg" t-value="request.session.pop('review_msg', None)"/>
+            <t t-if="review_msg">
+                <div class="container mt-3">
+                    <div t-att-class="'alert alert-' + review_msg[0]">
+                        <t t-esc="review_msg[1]"/>
+                    </div>
+                </div>
+            </t>
 
             <section id="tr_product_reviews" class="container mt-5 mb-5"
                      t-if="product.allow_reviews">
