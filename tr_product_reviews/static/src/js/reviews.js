@@ -2,20 +2,23 @@
     'use strict';
 
     document.addEventListener('DOMContentLoaded', function () {
-        const form = document.getElementById('tr_review_form');
-        const msgDiv = document.getElementById('tr_review_message');
+        var form = document.getElementById('tr_review_form');
+        var msgDiv = document.getElementById('tr_review_message');
 
         if (!form) return;
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const productId = (document.getElementById('tr_product_id') || {}).value || '';
-            const ratingInput = form.querySelector('input[name="tr_rating"]:checked');
-            const rating = ratingInput ? ratingInput.value : '0';
-            const title = ((document.getElementById('tr_review_title') || {}).value || '').trim();
-            const review = ((document.getElementById('tr_review_body') || {}).value || '').trim();
-            const btn = document.getElementById('tr_submit_review');
+            var productIdEl = document.getElementById('tr_product_id');
+            var productId = productIdEl ? productIdEl.value : '';
+            var ratingInput = form.querySelector('input[name="tr_rating"]:checked');
+            var rating = ratingInput ? ratingInput.value : '0';
+            var titleEl = document.getElementById('tr_review_title');
+            var bodyEl = document.getElementById('tr_review_body');
+            var title = titleEl ? titleEl.value.trim() : '';
+            var review = bodyEl ? bodyEl.value.trim() : '';
+            var btn = document.getElementById('tr_submit_review');
 
             if (!rating || rating === '0') {
                 showMsg('Please select a star rating.', 'warning');
@@ -29,23 +32,18 @@
             btn.disabled = true;
             btn.textContent = 'Submitting...';
 
+            var formData = new FormData();
+            formData.append('product_id', productId);
+            formData.append('rating', rating);
+            formData.append('title', title);
+            formData.append('review', review);
+
             fetch('/shop/product/review/submit', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    jsonrpc: '2.0',
-                    method: 'call',
-                    params: {
-                        product_id: productId,
-                        rating: parseInt(rating),
-                        title: title,
-                        review: review,
-                    },
-                }),
+                body: formData,
             })
             .then(function (res) { return res.json(); })
-            .then(function (data) {
-                const result = data.result || {};
+            .then(function (result) {
                 if (result.success) {
                     showMsg(result.message || 'Review submitted! Pending approval.', 'success');
                     form.reset();
@@ -56,7 +54,7 @@
                     btn.textContent = 'Submit Review';
                 }
             })
-            .catch(function () {
+            .catch(function (err) {
                 showMsg('Error submitting. Please try again.', 'danger');
                 btn.disabled = false;
                 btn.textContent = 'Submit Review';
