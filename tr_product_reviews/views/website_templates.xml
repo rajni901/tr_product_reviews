@@ -30,9 +30,10 @@
                 </div>
 
                 <!-- Approved Reviews List -->
-                <t t-if="product.review_ids">
+                <t t-set="approved_reviews" t-value="product.review_ids.filtered(lambda r: r.state == 'approved')"/>
+                <t t-if="approved_reviews">
                     <div class="tr-reviews-list mb-4">
-                        <t t-foreach="product.review_ids" t-as="rev">
+                        <t t-foreach="approved_reviews" t-as="rev">
                             <div class="tr-review-card">
                                 <div class="tr-review-header">
                                     <div class="tr-review-stars">

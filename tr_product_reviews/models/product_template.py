@@ -6,7 +6,6 @@ class ProductTemplate(models.Model):
 
     review_ids = fields.One2many(
         'product.review', 'product_id', string='Reviews',
-        domain=[('state', '=', 'approved')],
     )
     review_count = fields.Integer(
         compute='_compute_review_stats', string='Reviews',
