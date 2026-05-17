@@ -12,7 +12,7 @@
 
             var productIdEl = document.getElementById('tr_product_id');
             var productId = productIdEl ? productIdEl.value : '';
-            var ratingInput = form.querySelector('input[name="tr_rating"]:checked');
+            var ratingInput = form.querySelector('input[name="rating"]:checked');
             var rating = ratingInput ? ratingInput.value : '0';
             var titleEl = document.getElementById('tr_review_title');
             var bodyEl = document.getElementById('tr_review_body');
