@@ -5,13 +5,12 @@
               name="Product Reviews &amp; Ratings">
         <xpath expr="//section[@id='product_detail']" position="after">
 
-            <!-- Flash message from session -->
+            <!-- Flash message — fixed top banner -->
             <t t-set="review_msg" t-value="request.session.pop('review_msg', None)"/>
             <t t-if="review_msg">
-                <div class="container mt-3">
-                    <div t-att-class="'alert alert-' + review_msg[0]">
-                        <t t-esc="review_msg[1]"/>
-                    </div>
+                <div t-att-class="'tr-review-toast alert alert-' + review_msg[0]">
+                    <strong t-esc="review_msg[1]"/>
+                    <button type="button" class="btn-close float-end" onclick="this.parentElement.remove()"/>
                 </div>
             </t>
 

@@ -1,5 +1,21 @@
 /* ── Product Reviews & Ratings — Technical Rajni ── */
 
+/* Fixed top flash message */
+.tr-review-toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    min-width: 320px;
+    max-width: 600px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    animation: tr-slide-in 0.3s ease;
+}
+
 #tr_product_reviews {
     border-top: 2px solid #eee;
     padding-top: 32px;
