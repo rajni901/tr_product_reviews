@@ -110,23 +110,29 @@
     margin-bottom: 16px;
 }
 
-/* Star Input */
-.tr-star-input {
+/* Pure CSS Star Rating */
+.tr-star-rating {
     display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
     gap: 4px;
-    cursor: pointer;
 }
 
-.tr-star-btn {
-    font-size: 32px;
+.tr-star-rating input[type="radio"] {
+    display: none;
+}
+
+.tr-star-rating label {
+    font-size: 36px;
     color: #ddd;
-    transition: color 0.15s;
     cursor: pointer;
-    user-select: none;
+    transition: color 0.15s;
+    line-height: 1;
 }
 
-.tr-star-btn:hover,
-.tr-star-btn.active {
+.tr-star-rating label:hover,
+.tr-star-rating label:hover ~ label,
+.tr-star-rating input:checked ~ label {
     color: #f0ad4e;
 }
 

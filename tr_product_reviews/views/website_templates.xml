@@ -65,17 +65,21 @@
                         <form id="tr_review_form" class="tr-review-form">
                             <input type="hidden" id="tr_product_id" t-att-value="product.id"/>
 
-                            <!-- Star Rating -->
+                            <!-- Star Rating — Pure CSS Radio -->
                             <div class="tr-form-group mb-3">
                                 <label class="form-label fw-bold">Your Rating *</label>
-                                <div class="tr-star-input" id="tr_star_input">
-                                    <span class="tr-star-btn" data-value="1">★</span>
-                                    <span class="tr-star-btn" data-value="2">★</span>
-                                    <span class="tr-star-btn" data-value="3">★</span>
-                                    <span class="tr-star-btn" data-value="4">★</span>
-                                    <span class="tr-star-btn" data-value="5">★</span>
+                                <div class="tr-star-rating">
+                                    <input type="radio" id="star5" name="tr_rating" value="5"/>
+                                    <label for="star5" title="5 stars">★</label>
+                                    <input type="radio" id="star4" name="tr_rating" value="4"/>
+                                    <label for="star4" title="4 stars">★</label>
+                                    <input type="radio" id="star3" name="tr_rating" value="3"/>
+                                    <label for="star3" title="3 stars">★</label>
+                                    <input type="radio" id="star2" name="tr_rating" value="2"/>
+                                    <label for="star2" title="2 stars">★</label>
+                                    <input type="radio" id="star1" name="tr_rating" value="1"/>
+                                    <label for="star1" title="1 star">★</label>
                                 </div>
-                                <input type="hidden" id="tr_rating_value" value="0"/>
                             </div>
 
                             <!-- Title -->
