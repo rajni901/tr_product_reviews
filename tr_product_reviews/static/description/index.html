@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a5e 0%, #6c3fc5 100%);
+            color: #fff; padding: 48px 40px; text-align: center;
+        }
+        .hero h1 { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
+        .hero p  { font-size: 16px; opacity: 0.85; max-width: 600px; margin: 0 auto 16px; }
+        .hero .tagline { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; }
+
+        .badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+        .badge  { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+                  color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 12px; }
+
+        .section { padding: 40px; max-width: 960px; margin: 0 auto; }
+        h2 { color: #1a1a5e; font-size: 22px; margin-bottom: 20px;
+             border-bottom: 3px solid #6c3fc5; padding-bottom: 8px; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; }
+        .feature-card { background: #f8f9ff; border-left: 4px solid #1a1a5e; padding: 14px 16px; border-radius: 4px; }
+        .feature-card .icon { font-size: 22px; margin-bottom: 6px; }
+        .feature-card h3 { font-size: 13px; color: #1a1a5e; margin-bottom: 4px; }
+        .feature-card p  { font-size: 12px; color: #666; }
+
+        /* Steps */
+        .step { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
+        .step-num { background: linear-gradient(135deg, #1a1a5e, #6c3fc5);
+                    color: #fff; width: 36px; height: 36px; border-radius: 50%;
+                    display: flex; align-items: center; justify-content: center;
+                    font-weight: 800; font-size: 16px; flex-shrink: 0; }
+        .step-content h3 { color: #1a1a5e; margin-bottom: 6px; font-size: 15px; }
+        .step-content p  { color: #555; font-size: 13px; margin-bottom: 4px; }
+        .step-content ul { padding-left: 18px; margin-top: 6px; }
+        .step-content ul li { font-size: 13px; color: #555; margin-bottom: 4px; }
+
+        /* Screenshots */
+        .screenshot-section { padding: 40px; background: #f0f0f0; }
+        .screenshot-section h2 { color: #1a1a5e; font-size: 22px; margin-bottom: 24px;
+                                  border-bottom: 3px solid #6c3fc5; padding-bottom: 8px;
+                                  max-width: 960px; margin-left: auto; margin-right: auto; }
+        .screenshot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(440px,1fr));
+                           gap: 20px; max-width: 960px; margin: 0 auto; }
+        .screenshot-card { background: #fff; border-radius: 8px; overflow: hidden;
+                           box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+        .screenshot-card img { width: 100%; display: block; border-bottom: 1px solid #eee; }
+        .screenshot-card .caption { padding: 10px 14px; font-size: 13px; color: #555;
+                                    font-weight: 600; color: #1a1a5e; }
+
+        .cta { text-align: center; padding: 40px; background: #f8f9ff; }
+        .cta h2 { color: #1a1a5e; border: none; margin-bottom: 10px; }
+        .cta a  { background: linear-gradient(135deg, #1a1a5e, #6c3fc5);
+                  color: #fff; padding: 12px 28px; border-radius: 6px;
+                  text-decoration: none; font-weight: 700; display: inline-block; }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+    <h1>Website Product Reviews &amp; Ratings</h1>
+    <p>Let customers rate and review your products directly on your Odoo eCommerce website. Build trust and increase conversions.</p>
+    <div class="tagline">by Technical Rajni · Solutions | Automation | Innovation</div>
+    <div class="badges">
+        <span class="badge">Odoo 19</span>
+        <span class="badge">Community &amp; Enterprise</span>
+        <span class="badge">Star Ratings</span>
+        <span class="badge">Admin Approval</span>
+        <span class="badge">Toast Notifications</span>
+        <span class="badge">Zero Competition on v19</span>
+    </div>
+</div>
+
+<!-- Features -->
+<div class="section">
+    <h2>Key Features</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="icon">⭐</div>
+            <h3>Star Rating (1–5)</h3>
+            <p>Beautiful CSS star selector on every product page. Click to rate instantly.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📝</div>
+            <h3>Review Title &amp; Text</h3>
+            <p>Customers write a title and detailed review for each product.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔐</div>
+            <h3>Login Required</h3>
+            <p>Only logged-in users can submit reviews. Prevents spam and anonymous abuse.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">✅</div>
+            <h3>Admin Approval</h3>
+            <p>Reviews go to Pending state first. Admin approves or rejects before going live.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📊</div>
+            <h3>Average Rating</h3>
+            <p>Auto-calculated average rating and review count shown on product page.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔔</div>
+            <h3>Toast Notifications</h3>
+            <p>Beautiful success/error toast notifications after submitting a review.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🛠</div>
+            <h3>Backend Management</h3>
+            <p>Manage all reviews from Website → eCommerce → Products → Product Reviews.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🚫</div>
+            <h3>Duplicate Prevention</h3>
+            <p>One review per customer per product. Prevents multiple submissions.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Screenshots -->
+<div class="screenshot-section">
+    <h2>Screenshots</h2>
+    <div class="screenshot-grid">
+        <div class="screenshot-card">
+            <img src="screen4_frontend.png" alt="Frontend Reviews"/>
+            <div class="caption">⭐ Customer Reviews on Product Page — average rating, review cards and review form</div>
+        </div>
+        <div class="screenshot-card">
+            <img src="screen2_review_list_pending.png" alt="Pending Reviews List"/>
+            <div class="caption">📋 Backend — All Pending Reviews with Approve / Reject buttons</div>
+        </div>
+        <div class="screenshot-card">
+            <img src="screen1_review_detail.png" alt="Review Detail"/>
+            <div class="caption">📄 Review Detail View — Product, Customer, Rating, Status workflow</div>
+        </div>
+        <div class="screenshot-card">
+            <img src="screen3_review_list_all.png" alt="All Reviews"/>
+            <div class="caption">📊 All Reviews List — Full review management from backend</div>
+        </div>
+    </div>
+</div>
+
+<!-- Configuration Steps -->
+<div class="section">
+    <h2>⚙️ Configuration Steps</h2>
+
+    <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+            <h3>Install the Module</h3>
+            <p>Go to <strong>Apps → Search "Product Reviews" → Install</strong></p>
+            <p>After installation, the reviews section automatically appears on all product pages.</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+            <h3>Customer Submits a Review</h3>
+            <ul>
+                <li>Customer visits any product page on your website</li>
+                <li>Scrolls down to <strong>"Customer Reviews"</strong> section</li>
+                <li>Must be <strong>logged in</strong> — a login link is shown if not</li>
+                <li>Selects <strong>1–5 stars</strong> by clicking the stars</li>
+                <li>Enters a <strong>Review Title</strong> (required)</li>
+                <li>Writes their <strong>Review</strong> (optional)</li>
+                <li>Clicks <strong>"Submit Review"</strong></li>
+                <li>A <strong>toast notification</strong> confirms submission</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+            <h3>Admin Reviews Pending Submissions</h3>
+            <ul>
+                <li>Go to <strong>Website → eCommerce → Products → Product Reviews</strong></li>
+                <li>By default shows <strong>Pending</strong> reviews</li>
+                <li>View Product, Customer, Star Rating, Title, Date</li>
+                <li>Click <strong>✓ Approve</strong> — review goes live on website immediately</li>
+                <li>Click <strong>✗ Reject</strong> — review is hidden from website</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+            <h3>Review Shows on Product Page</h3>
+            <ul>
+                <li>After approval, refresh the product page</li>
+                <li>Review appears in the <strong>Customer Reviews</strong> section</li>
+                <li>Average rating and review count update automatically</li>
+                <li>Reviewer name and date are shown</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+            <h3>Enable / Disable Reviews Per Product</h3>
+            <ul>
+                <li>Go to <strong>Website → eCommerce → Products</strong></li>
+                <li>Open any product</li>
+                <li>Click <strong>"Reviews &amp; Ratings"</strong> tab</li>
+                <li>Toggle <strong>"Allow Reviews"</strong> ON or OFF</li>
+                <li>When OFF — the reviews section is hidden for that product</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+            <h3>View Review Stats on Product</h3>
+            <ul>
+                <li>Open any product form → <strong>Reviews &amp; Ratings</strong> tab</li>
+                <li>See <strong>Average Rating</strong> and <strong>Review Count</strong></li>
+                <li>View and manage all reviews for that product directly</li>
+                <li>Approve or reject reviews without leaving the product form</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+    <h2>Start Building Customer Trust Today!</h2>
+    <p>The only Product Reviews module for Odoo 19. Install in minutes.</p>
+    <a href="mailto:magentodeveloper1993@gmail.com">Get Support</a>
+    <p style="margin-top:16px; font-size:12px; color:#999;">
+        Website: <a href="https://www.technicalrajni.com" style="color:#6c3fc5;">www.technicalrajni.com</a>
+        &nbsp;|&nbsp; Email: magentodeveloper1993@gmail.com
+    </p>
+</div>
+
+</body>
+</html>
