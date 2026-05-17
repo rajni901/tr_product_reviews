@@ -5,12 +5,27 @@
               name="Product Reviews &amp; Ratings">
         <xpath expr="//section[@id='product_detail']" position="after">
 
-            <!-- Flash message — fixed top banner -->
+            <!-- Toast Notification -->
             <t t-set="review_msg" t-value="request.session.pop('review_msg', None)"/>
             <t t-if="review_msg">
-                <div t-att-class="'tr-review-toast alert alert-' + review_msg[0]">
-                    <strong t-esc="review_msg[1]"/>
-                    <button type="button" class="btn-close float-end" onclick="this.parentElement.remove()"/>
+                <div class="tr-toast-container">
+                    <div t-att-class="'tr-toast tr-toast-' + review_msg[0]" id="tr_review_toast">
+                        <div class="tr-toast-icon">
+                            <t t-if="review_msg[0] == 'success'">✓</t>
+                            <t t-elif="review_msg[0] == 'warning'">⚠</t>
+                            <t t-else="">✗</t>
+                        </div>
+                        <div class="tr-toast-body">
+                            <div class="tr-toast-title">
+                                <t t-if="review_msg[0] == 'success'">Review Submitted!</t>
+                                <t t-elif="review_msg[0] == 'warning'">Notice</t>
+                                <t t-else="">Error</t>
+                            </div>
+                            <div class="tr-toast-msg" t-esc="review_msg[1]"/>
+                        </div>
+                        <button class="tr-toast-close"
+                                onclick="document.getElementById('tr_review_toast').remove()">✕</button>
+                    </div>
                 </div>
             </t>
 

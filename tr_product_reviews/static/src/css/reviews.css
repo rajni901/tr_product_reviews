@@ -1,19 +1,78 @@
 /* ── Product Reviews & Ratings — Technical Rajni ── */
 
-/* Fixed top flash message */
-.tr-review-toast {
+/* Toast Container */
+.tr-toast-container {
     position: fixed;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    min-width: 320px;
-    max-width: 600px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    padding: 14px 20px;
-    font-size: 15px;
-    animation: tr-slide-in 0.3s ease;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    animation: tr-slide-in 0.4s ease;
+}
+
+/* Toast Box */
+.tr-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 300px;
+    max-width: 420px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    color: #fff;
+    font-size: 14px;
+}
+
+.tr-toast-success { background: linear-gradient(135deg, #2e7d32, #43a047); }
+.tr-toast-warning { background: linear-gradient(135deg, #e65100, #f57c00); }
+.tr-toast-danger  { background: linear-gradient(135deg, #c62828, #e53935); }
+
+.tr-toast-icon {
+    font-size: 22px;
+    font-weight: 900;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tr-toast-body { flex: 1; }
+
+.tr-toast-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.tr-toast-msg {
+    font-size: 13px;
+    opacity: 0.92;
+}
+
+.tr-toast-close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 13px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tr-toast-close:hover { background: rgba(255,255,255,0.35); }
+
+@keyframes tr-slide-in {
+    from { opacity: 0; transform: translateX(60px); }
+    to   { opacity: 1; transform: translateX(0); }
 }
 
 #tr_product_reviews {
