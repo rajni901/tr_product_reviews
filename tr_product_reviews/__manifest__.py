@@ -4,7 +4,7 @@
     'category': 'Website/eCommerce',
     'summary': 'Allow customers to rate and review products on your Odoo eCommerce website',
     'description': """
-Website Product Reviews & Ratings — by Technical Rajni
+Website Product Reviews & Ratings — by Vayu Sharma
 =======================================================
 Let customers rate and review your products directly on your website.
 
@@ -18,8 +18,8 @@ Features:
 - Backend view to manage all reviews
 - Show reviewer name and date
     """,
-    'author': 'Technical Rajni',
-    'website': 'https://www.technicalrajni.com',
+    'author': 'Vayu Sharma',
+    'website': '',
     'license': 'OPL-1',
     'depends': ['website_sale', 'mail', 'account'],
     'data': [
